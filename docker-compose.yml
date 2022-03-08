@@ -1,0 +1,22 @@
+version: '3'
+services:
+  tomcat:
+    container_name: tomcat-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - "3006:8080"
+    volumes:
+      - qcloud-backend:/home/
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  qcloud-backend:
+    external: true
+
+
+networks:
+ default:
+  external:
+    name: appmodz
